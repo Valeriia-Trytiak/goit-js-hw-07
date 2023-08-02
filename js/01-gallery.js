@@ -38,22 +38,36 @@ galleryContainer.insertAdjacentHTML("beforeend", creatGalleryEl(galleryItems));
 galleryContainer.addEventListener("click", onGalleryContainerClick);
 
 function onGalleryContainerClick(evt) {
+  // Запрет на переход по ссылке
   const linkGalleryEl = document.querySelector(".gallery__link");
+
   if (evt.target === linkGalleryEl) {
     evt.target.preventDefault();
     return;
   }
 
+  // Слушатель на клавиатуру при открытой модалке
+  document.addEventListener("keydown", onClose);
+
+  // Забираю значение data-sourse
   const oringinalImgSrc = evt.target.dataset.source;
-  //   console.log(oringinalImgSrc);
-  //   console.log(`єто таргет`, evt.target);
+
+  // Создаю модалку с новым размером изображения
   const instance = basicLightbox.create(`
-    <div class="modal">
-    <img src="${oringinalImgSrc}" width="1200">
-    </div>
-`);
+      <div class="modal">
+      <img src="${oringinalImgSrc}" width="1200">
+      </div>
+  `);
 
   instance.show();
+
+  // Закрываю модалку по клику на клавишу
+  function onClose(evt) {
+    if (!evt.code === "Escape") {
+      return;
+    }
+    instance.close();
+  }
 }
 
 // console.log(galleryItems);
