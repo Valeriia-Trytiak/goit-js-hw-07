@@ -41,13 +41,6 @@ function onGalleryContainerClick(evt) {
   // Запрет на переход по ссылке
   evt.preventDefault();
 
-  // const linkGalleryEl = document.querySelector(".gallery__link");
-
-  // if (evt.target === linkGalleryEl) {
-  //   evt.target.preventDefault();
-  //   return;
-  // }
-
   // Слушатель на клавиатуру при открытой модалке
   document.addEventListener("keydown", onClose);
 
@@ -71,5 +64,3 @@ function onGalleryContainerClick(evt) {
     instance.close();
   }
 }
-
-// console.log(galleryItems);
