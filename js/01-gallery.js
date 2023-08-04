@@ -42,7 +42,7 @@ function onGalleryContainerClick(evt) {
   evt.preventDefault();
 
   // Слушатель на клавиатуру при открытой модалке
-  // document.addEventListener("keydown", onClose(), );
+  document.addEventListener("keydown", onClickClose, { once: true });
 
   // Забираю значение data-sourse
   const oringinalImgSrc = evt.target.dataset.source;
@@ -55,11 +55,12 @@ function onGalleryContainerClick(evt) {
   `);
 
   instance.show();
+
+  // Закрываю модалку по клику на клавишу
+  function onClickClose(evt) {
+    if (!evt.code === "Escape") {
+      return;
+    }
+    instance.close();
+  }
 }
-// Закрываю модалку по клику на клавишу
-// function onClose(evt) {
-//   if (!evt.code === "Escape") {
-//     return;
-//   }
-//   instance.close();
-// }
