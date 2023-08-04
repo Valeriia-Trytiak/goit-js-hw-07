@@ -61,6 +61,7 @@ function onGalleryContainerClick(evt) {
     if (!evt.code === "Escape") {
       return;
     }
+    console.log("escape");
     instance.close();
   }
 }
