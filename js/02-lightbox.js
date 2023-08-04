@@ -26,7 +26,9 @@ function creatGalleryEl(arr) {
 
 // Добавление в ДОМ
 galleryContainer.insertAdjacentHTML("beforeend", creatGalleryEl(galleryItems));
-// console.log(galleryItems);
+
+// инициализирую библиотеку с описанием и анимацией
+let gallery = new SimpleLightbox(".gallery a", { captionsData: "alt", captionDelay: 250 });
 
 // Добавление слушателя событий и делегирование
 galleryContainer.addEventListener("click", onGalleryContainerClick);
@@ -34,8 +36,6 @@ galleryContainer.addEventListener("click", onGalleryContainerClick);
 function onGalleryContainerClick(evt) {
   // запрешаю переход по ссілке и скачивание файла
   evt.preventDefault();
-
-  // инициализирую библиотеку с описанием и анимацией
-  let gallery = new SimpleLightbox(".gallery a", { sourceAttr: "href", captionsData: "alt", captionDelay: 250 });
+  // открываю модалку
   gallery.open();
 }
