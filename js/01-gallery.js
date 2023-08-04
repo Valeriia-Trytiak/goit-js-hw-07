@@ -39,12 +39,14 @@ galleryContainer.addEventListener("click", onGalleryContainerClick);
 
 function onGalleryContainerClick(evt) {
   // Запрет на переход по ссылке
-  const linkGalleryEl = document.querySelector(".gallery__link");
+  evt.preventDefault();
 
-  if (evt.target === linkGalleryEl) {
-    evt.target.preventDefault();
-    return;
-  }
+  // const linkGalleryEl = document.querySelector(".gallery__link");
+
+  // if (evt.target === linkGalleryEl) {
+  //   evt.target.preventDefault();
+  //   return;
+  // }
 
   // Слушатель на клавиатуру при открытой модалке
   document.addEventListener("keydown", onClose);

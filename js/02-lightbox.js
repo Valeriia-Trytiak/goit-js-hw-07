@@ -27,3 +27,16 @@ function creatGalleryEl(arr) {
 // Добавление в ДОМ
 galleryContainer.insertAdjacentHTML("beforeend", creatGalleryEl(galleryItems));
 // console.log(galleryItems);
+
+// Добавление слушателя событий и делегирование
+galleryContainer.addEventListener("click", onGalleryContainerClick);
+
+function onGalleryContainerClick(evt) {
+  // запрешаю переход по ссілке и скачивание файла
+  evt.preventDefault();
+
+  let gallery = new SimpleLightbox(".gallery a");
+  gallery.on("show.simplelightbox", function () {
+    // Do something…
+  });
+}
