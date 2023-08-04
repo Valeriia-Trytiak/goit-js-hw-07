@@ -35,8 +35,7 @@ function onGalleryContainerClick(evt) {
   // запрешаю переход по ссілке и скачивание файла
   evt.preventDefault();
 
-  let gallery = new SimpleLightbox(".gallery a");
-  gallery.on("show.simplelightbox", function () {
-    // Do something…
-  });
+  // инициализирую библиотеку с описанием и анимацией
+  let gallery = new SimpleLightbox(".gallery a", { captionsData: "alt", captionDelay: 250 });
+  gallery.open();
 }
