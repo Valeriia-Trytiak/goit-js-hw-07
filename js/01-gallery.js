@@ -66,9 +66,8 @@ function onGalleryContainerClick(evt) {
   instance.show();
 
   function onEscapePress(evt) {
-    if (!evt.code === "Escape") {
-      return;
+    if (evt.code === "Escape") {
+      instance.close();
     }
-    instance.close();
   }
 }
