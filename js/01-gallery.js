@@ -41,27 +41,33 @@ function onGalleryContainerClick(evt) {
   // Запрет на переход по ссылке
   evt.preventDefault();
 
-  // Слушатель на клавиатуру при открытой модалке
-  document.addEventListener("keydown", onClickClose, { once: true });
-
   // Забираю значение data-sourse
   const oringinalImgSrc = evt.target.dataset.source;
 
   // Создаю модалку с новым размером изображения
-  const instance = basicLightbox.create(`
+  const instance = basicLightbox.create(
+    `
       <div class="modal">
       <img src="${oringinalImgSrc}" width="1200">
       </div>
-  `);
+  `,
+    {
+      onShow: () => {
+        document.addEventListener("keydown", (evt) => {
+          if (!evt.code === "Escape") {
+            return;
+          }
+          instance.close();
+        });
+      },
+    },
+    {
+      onClose: () => {
+        document.removeEventListener("keydown", onShow);
+        console.log("удалила слушателя");
+      },
+    }
+  );
 
   instance.show();
-
-  // Закрываю модалку по клику на клавишу
-  function onClickClose(evt) {
-    if (!evt.code === "Escape") {
-      return;
-    }
-    console.log("escape");
-    instance.close();
-  }
 }

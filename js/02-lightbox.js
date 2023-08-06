@@ -28,7 +28,7 @@ function creatGalleryEl(arr) {
 galleryContainer.insertAdjacentHTML("beforeend", creatGalleryEl(galleryItems));
 
 // инициализирую библиотеку с описанием и анимацией
-let gallery = new SimpleLightbox(".gallery a", { captionsData: "alt", captionDelay: 250 });
+let lightbox = new SimpleLightbox(".gallery a", { captionsData: "alt", captionDelay: 250 });
 
 // Добавление слушателя событий и делегирование
 galleryContainer.addEventListener("click", onGalleryContainerClick);
@@ -37,5 +37,5 @@ function onGalleryContainerClick(evt) {
   // запрешаю переход по ссілке и скачивание файла
   evt.preventDefault();
   // открываю модалку
-  gallery.open();
+  // gallery.open();
 }
