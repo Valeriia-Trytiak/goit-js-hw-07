@@ -53,21 +53,22 @@ function onGalleryContainerClick(evt) {
   `,
     {
       onShow: () => {
-        document.addEventListener("keydown", (evt) => {
-          if (!evt.code === "Escape") {
-            return;
-          }
-          instance.close();
-        });
+        document.addEventListener("keydown", onEscapePress);
       },
     },
     {
       onClose: () => {
-        document.removeEventListener("keydown", onShow);
-        console.log("удалила слушателя");
+        document.removeEventListener("keydown", onEscapePress);
       },
     }
   );
 
   instance.show();
+
+  function onEscapePress(evt) {
+    if (!evt.code === "Escape") {
+      return;
+    }
+    instance.close();
+  }
 }
